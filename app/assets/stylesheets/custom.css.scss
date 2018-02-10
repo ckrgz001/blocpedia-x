@@ -1,0 +1,84 @@
+$navbar-default-bg: #96858F;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#logo {
+    float: left;
+    font-size: 1.7em;
+    color: #ffffff;
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+
+#logo:hover {
+    color: gray;
+    text-decoration: underline;
+}
+
+.navbar-nav>li>a  {
+  color: white !important;
+}
+.navbar-nav>li>a:hover  {
+  color: black !important;
+}
+
+.jumbotron {
+  background-image: asset-url('Great_Library.jpg');
+  background-size: cover;
+  height: 350px;
+  color: white;
+  text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+.sign-btn-1 {
+  text-align: center;
+}
+
+footer {
+    margin-top: 45px;
+    padding-top: 5px;
+    border-top: 1px solid #eaeaea;
+    color: #777;
+  }
+  
+footer a:hover {
+    color: #222;
+  }
+  
+footer small {
+    float: left;
+  }
+  
+footer ul li {
+    float: left;
+    margin-left: 15px;
+  }
+  
+footer ul {
+    float: right;
+    list-style: none;
+  }
+  
+#one th {
+  font-weight: bold;
+  text-align: center;
+}
+
+.wikitable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.wikitable td {
+  padding: 5px;
+  border:  #eaeaea 1px solid;
+}
+
+.wikitable tr:nth-child(even) {
+  background: white;
+}

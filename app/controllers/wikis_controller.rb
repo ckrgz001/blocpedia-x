@@ -16,7 +16,7 @@ class WikisController < ApplicationController
       @wiki = Wiki.new
       @wiki.title = params[:wiki][:title]
       @wiki.body = params[:wiki][:body]
-  
+      @wiki.user = User.last
       if @wiki.save
         flash[:notice] = "Wiki was created successfully."
         redirect_to wiki_path(@wiki)

@@ -1,19 +1,20 @@
-<h1>All Public Wikis</h1>
-<p>
-  <%= link_to "Create new wiki", new_wiki_path, class: 'btn btn-success' %>
-</p>
+<h1 align="center"> Welcome to <%= @user.username %>'s page </h1>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 center grava">
+    <%= gravatar_for @user, size: 80 %>
+  </div>
+</div>
+
 <div class="col-xs-10 col-xs-offset-1 tabletop">
 <table class="wikitable" id="one">
   <tr class="tablehead">
     <th>Wiki</th>
-    <th>Creator</th>
     <th>Actions</th>
   </tr>
    
- <% @wikis.each do |x| %>
+ <% @user.wikis.each do |x| %>
     <tr class="tablehead">
       <td>- <%= link_to x.title, wiki_path(x.id) %></td>
-      <td><%= x.user.username if x.user %></td>
       <td><%= link_to 'Edit', edit_wiki_path(x.id), class: 'btn btn-warning' %> | <%= link_to "Delete", wiki_path(x.id), method: :delete, 
       class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this wiki?'} %>
     </tr>

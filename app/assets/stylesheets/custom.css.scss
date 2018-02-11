@@ -69,16 +69,37 @@ footer ul {
   text-align: center;
 }
 
+.tabletop {
+  padding-top: 15px;
+}
+
+.tablehead th {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.tablehead td {
+  font-size: 1.1em;
+}
+
 .wikitable {
   width: 100%;
   border-collapse: collapse;
 }
 
 .wikitable td {
-  padding: 5px;
+  padding: 10px;
   border:  #eaeaea 1px solid;
 }
 
 .wikitable tr:nth-child(even) {
   background: white;
+}
+
+.grava {
+  padding:  15px;
+}
+
+.center {
+  text-align: center;
 }

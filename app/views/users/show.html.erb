@@ -4,6 +4,9 @@
     <%= gravatar_for @user, size: 80 %>
   </div>
 </div>
+<div class="col-md-4 col-md-offset-4 center grava">
+    <%= link_to "Edit your profile", edit_user_registration_path(current_user), class: 'btn btn-info' %>
+</div>
 
 <div class="col-xs-10 col-xs-offset-1 tabletop">
 <table class="wikitable" id="one">

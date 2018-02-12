@@ -1,5 +1,6 @@
 $navbar-default-bg: #96858F;
 
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -39,6 +40,17 @@ $navbar-default-bg: #96858F;
   margin-bottom: 5px;
   margin-right: 5px;
 }
+
+.logged-in {
+  margin-top: 5px;
+  margin-left: 5px;
+  
+}
+
+.navnav {
+  color: white;
+}
+
 .sign-btn-1 {
   text-align: center;
 }

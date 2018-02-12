@@ -2,7 +2,7 @@ class WikisController < ApplicationController
     before_action :set_wiki, only: [:edit, :update, :show, :destroy]
   
     def index
-      @wikis = Wiki.all
+      @wikis = Wiki.paginate(:page => params[:page], :per_page => 3)
     end
   
     def show
@@ -16,7 +16,7 @@ class WikisController < ApplicationController
       @wiki = Wiki.new
       @wiki.title = params[:wiki][:title]
       @wiki.body = params[:wiki][:body]
-      @wiki.user = User.last
+     
       if @wiki.save
         flash[:notice] = "Wiki was created successfully."
         redirect_to wiki_path(@wiki)

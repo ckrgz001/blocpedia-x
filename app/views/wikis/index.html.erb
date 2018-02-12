@@ -2,6 +2,9 @@
 <p>
   <%= link_to "Create new wiki", new_wiki_path, class: 'btn btn-success' %>
 </p>
+<div align="center">
+  <%= will_paginate @wikis%>
+</div>
 <div class="col-xs-10 col-xs-offset-1 tabletop">
 <table class="wikitable" id="one">
   <tr class="tablehead">
@@ -20,3 +23,7 @@
  <% end %>
  </table>
  </div>
+
+<div align="center">
+  <%= will_paginate @wikis%>
+</div>

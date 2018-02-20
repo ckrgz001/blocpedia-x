@@ -21,3 +21,10 @@
 /yarn-error.log
 
 .byebug_history
+
+#IGNORE setup_mail.RB
+/config/initializers/setup_mail.rb
+
+
+# Ignore application configuration
+/config/application.yml

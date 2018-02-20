@@ -57,4 +57,5 @@ class WikisController < ApplicationController
     def set_wiki
       @wiki = Wiki.find(params[:id])
     end
+
   end

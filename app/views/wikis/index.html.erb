@@ -30,6 +30,11 @@
  </table>
  </div>
 
+
+  <% if @wiki.private == true %>
+            <p><%= link_to x.title, wiki_path(x.id) %> -- private</p>
+        <% end %>
+
 <div align="center">
   <%= will_paginate @wikis%>
 </div>

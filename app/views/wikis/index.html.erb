@@ -31,9 +31,18 @@
  </div>
 
 
-  <% if @wiki.private == true %>
-            <p><%= link_to x.title, wiki_path(x.id) %> -- private</p>
+
+  <h2>Wikis</h2>
+  <div class="newspaper">
+    <% @wikis.each do |x| %>
+        <% if x.private == false %>
+            <p><%= link_to x.title, edit_wiki_path(x.id) %></p>
+        <% else %>
+            <p><%= link_to x.title, edit_wiki_path(x.id) %> -- private</p>
         <% end %>
+    <% end %>
+  </div>
+
 
 <div align="center">
   <%= will_paginate @wikis%>

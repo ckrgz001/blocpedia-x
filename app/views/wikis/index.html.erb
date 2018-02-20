@@ -15,10 +15,11 @@
   </tr>
    
  <% @wikis.each do |x| %>
+    <% if x.private == false %>
     <tr class="tablehead">
       <td>- <%= link_to x.title, wiki_path(x.id) %></td>
       <td><%= link_to x.user.username, user_path(x.user) if x.user %></td>
-      <% if user_signed_in? %>
+      <% if user_signed_in?%>
       <td align="center"><%= link_to 'Edit', edit_wiki_path(x.id), class: 'btn btn-warning' %> <%= link_to "Delete", wiki_path(x.id), method: :delete, 
       class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this wiki?'} %></td>
       <% else %>
@@ -26,6 +27,7 @@
       <%= link_to ' Sign Up', new_user_registration_path, class: 'btn btn-primary'  %></li> </td>
     </tr>
     <%end%>
+ <% end %>
  <% end %>
  </table>
  </div>

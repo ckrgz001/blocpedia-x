@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="col-sm-6">
+    <h4>Upgrade to premium!</h4>
+    <p>Premium membership is just $5 a month and includes unlimited wikis and collaborators.</p>
+    <ul>
+      <li>Create private wikis.</li>
+      <li>Collaborate with other users.</li>
+      <li>Cancel at anytime.</li>
+    </ul>
+    <% if user_signed_in? && current_user.role == 'standard' %>
+      <%= form_tag charges_path do %>
+          <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
+      <% end %>
+    <% else if user_signed_in? && current_user.role == 'premium' %>
+      <p><strong>Congrats! You are already a premium member. To change your membership click: <br> <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn' %> </strong></p>
+    <% else %>
+      <p><strong>Please create an account before upgrading.</strong></p>
+      <%= link_to "Sign Up", new_user_registration_path, :class => 'btn btn-lg'  %>
+    <% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-6">
+
+  </div>
+</div>

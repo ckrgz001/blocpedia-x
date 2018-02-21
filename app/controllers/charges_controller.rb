@@ -15,16 +15,17 @@ class ChargesController < ApplicationController
         card: params[:stripeToken]
         )
     
-        # Where the real magic happens
-        charge = Stripe::Charge.create(
-        customer: customer.id, # Note -- this is NOT the user_id in your app
-        amount: Amount.default,
-        description: "Premium Membership - #{current_user.email}",
-        currency: 'usd'
-        )
     
-        flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
-        redirect_to user_path(current_user) # or wherever
+          subscription = Stripe::Subscription.create(
+              :customer => customer.id,
+              :plan => 'premium',
+          )
+          current_user.update_attributes(stripe_id: customer.id)
+          current_user.update_attributes(stripe_subscription: subscription.id)
+          current_user.update_attributes(role: 'premium')
+      
+          flash[:notice] = "Welcome to premium, #{current_user.email}! Start creating private wikis today."
+          redirect_to wikis_path
     
         # Stripe will send back CardErrors, with friendly messages
         # when something goes wrong.

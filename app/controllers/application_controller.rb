@@ -9,10 +9,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
-protected
-def configure_permitted_parameters
-  devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :username, :password, :password_confirmation])
-  devise_parameter_sanitizer.permit(:sign_in, keys: [:login, :username, :email, :password, :remember_me])
-  devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :password_confirmation, :current_password])
-end
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :username, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:login, :username, :email, :password, :remember_me])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :password_confirmation, :current_password])
+  end
+
+  def current_user_downgrade_wikis
+    privatewikis = current_user.wikis.where(private: true)
+    privatewikis.each do |privatewiki|
+      privatewiki.update_attribute(:private, false)
+    end
+  end
+
 end

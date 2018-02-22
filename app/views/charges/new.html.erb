@@ -12,7 +12,7 @@
           <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
       <% end %>
     <% else if user_signed_in? && current_user.role == 'premium' %>
-      <p><strong>Congrats! You are already a premium member. To change your membership click: <br> <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn' %> </strong></p>
+      <p><strong> You are already a premium member. To edit your profile click: <br> <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn' %> </strong></p>
     <% else %>
       <p><strong>Please create an account before upgrading.</strong></p>
       <%= link_to "Sign Up", new_user_registration_path, :class => 'btn btn-lg'  %>

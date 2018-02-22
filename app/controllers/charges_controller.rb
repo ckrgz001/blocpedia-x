@@ -34,4 +34,14 @@ class ChargesController < ApplicationController
         flash[:alert] = e.message
         redirect_to new_charge_path
     end
+
+
+  def delete
+    customer = Stripe::Customer.retrieve(current_user.stripe_id)
+    subscription = Stripe::Subscription.retrieve(current_user.stripe_subscription )
+    subscription.delete
+    current_user.update_attributes(role: 'standard')
+    redirect_to edit_user_registration_path
+    flash[:notice] = "Membership downgraded. Boo."
+  end
 end

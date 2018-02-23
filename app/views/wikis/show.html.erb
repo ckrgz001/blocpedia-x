@@ -4,9 +4,10 @@
    <div class="col-md-8">
 
     <div class="paragraph">
-      <p><small>[ created by: <%= link_to @wiki.user.username, user_path(@wiki.user)%> ]</small></>
+      <p><small> created by: [<%= link_to @wiki.user.username, user_path(@wiki.user)%>] <br>
+      last updated: <%= @wiki.updated_at %></small></br>
    </div>
-     <p><%= @wiki.body %></p>
+     <p><%= markdown(@wiki.body) %></p>
    </div>
    <div class="col-md-4">
     <% if user_signed_in?%>
@@ -14,7 +15,7 @@
       <%= link_to "Delete Wiki", wiki_path(@wiki), method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this wiki?'} %>
     <% else %>  
       <%= link_to 'Log In to Edit',  new_user_session_path, class: 'btn btn-warning' %> or
-      <%= link_to ' Sign Up', new_user_registration_path, class: 'btn btn-primary'  %></li>
+      <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary'  %></li>
   <% end %>
     <%= link_to "Back to Index", wikis_path, class: 'btn btn-info' %>
   

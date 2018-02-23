@@ -83,7 +83,8 @@ gem 'devise-bootstrapped'
 gem 'will_paginate', '3.1.5'
 gem 'bootstrap-will_paginate', '1.0.0'
 
-gem "pundit"
+gem 'pundit'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'stripe'
 gem 'figaro', '1.0'
+gem 'redcarpet'

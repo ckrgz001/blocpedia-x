@@ -27,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def current_user_downgrade_wikis
-    privatewikis = current_user.wikis.where(private: true)
+    privatewikis = self.wikis.where(private: true)
     privatewikis.each do |privatewiki|
       privatewiki.update_attribute(:private, false)
     end

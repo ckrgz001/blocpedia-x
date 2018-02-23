@@ -16,11 +16,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :password_confirmation, :current_password])
   end
 
-  def current_user_downgrade_wikis
-    privatewikis = current_user.wikis.where(private: true)
-    privatewikis.each do |privatewiki|
-      privatewiki.update_attribute(:private, false)
-    end
-  end
-
 end

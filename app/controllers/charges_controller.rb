@@ -36,6 +36,13 @@ class ChargesController < ApplicationController
     end
 
 
+  def current_user_downgrade_wikis
+    private_wikis = current_user.wikis.where(private: true)
+    private_wikis.each do |private_wiki|
+      private_wiki.update_attribute(:private, false)
+    end
+  end
+
   def delete
     customer = Stripe::Customer.retrieve(current_user.stripe_id)
     subscription = Stripe::Subscription.retrieve(current_user.stripe_subscription )

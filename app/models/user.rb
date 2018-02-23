@@ -26,5 +26,11 @@ class User < ApplicationRecord
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
 
+  def current_user_downgrade_wikis
+    privatewikis = current_user.wikis.where(private: true)
+    privatewikis.each do |privatewiki|
+      privatewiki.update_attribute(:private, false)
+    end
+  end
 
 end

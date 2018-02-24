@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221005535) do
+ActiveRecord::Schema.define(version: 20180223231429) do
+
+  create_table "collaborators", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "wiki_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_collaborators_on_id", unique: true
+    t.index ["user_id"], name: "index_collaborators_on_user_id"
+    t.index ["wiki_id"], name: "index_collaborators_on_wiki_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -35,6 +45,13 @@ ActiveRecord::Schema.define(version: 20180221005535) do
     t.string "stripe_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_wikis", id: false, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "wiki_id", null: false
+    t.index ["user_id", "wiki_id"], name: "index_users_wikis_on_user_id_and_wiki_id"
+    t.index ["wiki_id", "user_id"], name: "index_users_wikis_on_wiki_id_and_user_id"
   end
 
   create_table "wikis", force: :cascade do |t|

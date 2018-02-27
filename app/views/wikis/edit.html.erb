@@ -1,3 +1,9 @@
 <h1>Edit Wiki</h1>
  
 <%= render "form" %>
+
+    <% if !@wiki.id.nil? %> 
+      <div>
+        <%= render partial: 'collaborators/collaborator_form', locals: { wiki: @wiki } %>
+      </div>
+    <% end %>
